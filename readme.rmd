@@ -50,7 +50,7 @@ To run the shiny app put server.R, UI.R and traitR_pcoa.R in a folder. Open them
 
 ###Author(s)
 Linley Jesson
-<p>Chandra Moffit
+<p>Chandra Moffat
 <p>Steve Heard (for the original TraitSpaces)
 
 
