@@ -57,7 +57,6 @@ traitR.fun<-function(df,speciescol,attackedcol,ancspecies,attackedgroup,traitgrp
   df2<- na.omit(subset(df,select=c(speciescol,attackedcol)))
   novelsp<-levels(df2[[speciescol]])[levels(df2[[speciescol]])!=ancspecies]
   novelsp<-novelsp[novelsp!=""]
-  unattacked<-levels(df2[[attackedcol]])[levels(df2[[attackedcol]])!=attackedgroup]
   if(test=="pca"){
   pca_all<-pcascores(df = df,speciesCol = speciescol,attackedCol = attackedcol,traitGrp = traitgrp)}
   if(test=="pcoa"){
