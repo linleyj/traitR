@@ -32,4 +32,19 @@ niter: number of iteractions
 test: either "pca" or "pcoa"
 correction: for negative eigenvalues in pcoa (see ?pcoa) - "none", "lingoes" or "cailliez"
 
+Value
+distances The distances between the centroids for attacked and unattacked plants
+permutations The randomised distances for each permutation
+pvals The pvalues for the three hypotheses
+centroid1 The position of the centroid for each species
+centroid2 The position of the centroid for each attacked/unattacked combination
+pcscores The scores and the values of the species/attacked columns for the first two PCA axes for plotting
+loadings The loadings for the PCA. Not implemented for PCOA
+samp Sample size.
+
+Author(s)
+Linley Jesson
+Chandra Moffit
+Steve Heard (for the original TraitSpaces)
+
 
