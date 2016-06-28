@@ -52,6 +52,8 @@ pcoascores <- function(df, speciesCol,attackedCol,traitGrp,correction)
   
 traitR.fun<-function(df,speciescol,attackedcol,ancspecies,attackedgroup,traitgrp,niter,test="pca",correction=NULL)
 {
+  if (!require("pacman")) install.packages("pacman")
+  pacman::p_load(FD,ape)
   df2<- na.omit(subset(df,select=c(speciescol,attackedcol)))
   novelsp<-levels(df2[[speciescol]])[levels(df2[[speciescol]])!=ancspecies]
   novelsp<-novelsp[novelsp!=""]
