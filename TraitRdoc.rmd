@@ -17,20 +17,20 @@ TraitR is the R version of traitspaces written by Steve Heard (initially in visu
 
 
 #usage:
-source("traitR_standalone_pca_pcoa.R)
-traitR.fun(df,speciescol,attackedcol,ancspecies,attackedgroup,traitgrp,niter,test="pca",correction=NULL)
+<br>source("traitR_standalone_pca_pcoa.R)
+<br>traitR.fun(df,speciescol,attackedcol,ancspecies,attackedgroup,traitgrp,niter,test="pca",correction=NULL)
 
 #Arguments
-df: a data frame to use.  This is datafile with a row for each individual host plant, and columns for host species identity, presence/absence of each herbivore, and columns for individuals traits measured. 
-speciescol: the column name depicting the insect species
-attackedcol: the column name designating attacked/unattacked
-ancspecies: the designator for the ancestral species in speciescol
-ancspecies: the designator for the attacked level in attackedcol
-traitgrp: a list of column names giving the traits of interest. Easiest to generate using
+<br>df: a data frame to use.  This is datafile with a row for each individual host plant, and columns for host species identity, presence/absence of each herbivore, and columns for individuals traits measured. 
+<br>speciescol: the column name depicting the insect species
+<br>attackedcol: the column name designating attacked/unattacked
+<br>ancspecies: the designator for the ancestral species in speciescol
+<br>ancspecies: the designator for the attacked level in attackedcol
+<br>traitgrp: a list of column names giving the traits of interest. Easiest to generate using
   traitgrp<-list(mydat[,3:7]). 
-niter: number of iteractions
-test: either "pca" or "pcoa"
-correction: for negative eigenvalues in pcoa (see ?pcoa) - "none", "lingoes" or "cailliez"
+<br>niter: number of iteractions
+<br>test: either "pca" or "pcoa"
+<br>correction: for negative eigenvalues in pcoa (see ?pcoa) - "none", "lingoes" or "cailliez"
 
 #Details
 To run the shiny app put server.R, UI.R and traitR_pcoa.R in a folder. Open them in R studio and click run app from either server.R or UI.R
