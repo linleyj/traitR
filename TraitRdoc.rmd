@@ -9,18 +9,18 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## TraitR
+##TraitR
 <br>
-#Description
+###Description
 
 TraitR is the R version of traitspaces written by Steve Heard (initially in visualbasic). Chandra Moffit and I recoded it for R and I decided to shinyfy it. There are two versions: a standalone and the shiny app.
 
 
-#usage:
+###usage:
 <br>source("traitR_standalone_pca_pcoa.R)
 <br>traitR.fun(df,speciescol,attackedcol,ancspecies,attackedgroup,traitgrp,niter,test="pca",correction=NULL)
 
-#Arguments
+###Arguments
 <br>df: a data frame to use.  This is datafile with a row for each individual host plant, and columns for host species identity, presence/absence of each herbivore, and columns for individuals traits measured. 
 <br>speciescol: the column name depicting the insect species
 <br>attackedcol: the column name designating attacked/unattacked
@@ -32,13 +32,13 @@ TraitR is the R version of traitspaces written by Steve Heard (initially in visu
 <br>test: either "pca" or "pcoa"
 <br>correction: for negative eigenvalues in pcoa (see ?pcoa) - "none", "lingoes" or "cailliez"
 
-#Details
+###Details
 To run the shiny app put server.R, UI.R and traitR_pcoa.R in a folder. Open them in R studio and click run app from either server.R or UI.R
  <br>Both the shiny app and the standalone will implement a pca for numeric data or a pcoa for a combination of numeric and categorical data. Categorical data can be factors or ordered factors. The pcoa implements the gower dissimilarity gowdis function in the FD package. The pca uses the primcomp function. 
  
  At present the pca works on scaled and centered data (cor=T in princomp) but not for pcoa. This may be implemented in a later version.
 
-#Value
+###Value
 <br>distances The distances between the centroids for attacked and unattacked plants
 <br>permutations The randomised distances for each permutation
 <br>pvals The pvalues for the three hypotheses
@@ -48,9 +48,9 @@ To run the shiny app put server.R, UI.R and traitR_pcoa.R in a folder. Open them
 <br>loadings The loadings for the PCA. Not implemented for PCOA
 <br>samp Sample size.
 
-Author(s)
+###Author(s)
 Linley Jesson
-Chandra Moffit
-Steve Heard (for the original TraitSpaces)
+<p>Chandra Moffit
+<p>Steve Heard (for the original TraitSpaces)
 
 
