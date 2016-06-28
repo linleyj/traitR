@@ -9,22 +9,29 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## TraitR
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+TraitR is the R version of traitspaces written by Steve Heard (initially in visualbasic). Chandra Moffit and I recoded it for R and I decided to shinyfy it. There are two versions: a standalone and the shiny app. Both will implement a pca for numeric data or a pcoa for a combination of numeric and categorical data. Categorical data can be factors or ordered factors. The pcoa implements the gower dissimilarity gowdis function in the FD package. The pca uses the primcomp function.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The code for the standalone is as follows:
 
-```{r cars}
-summary(cars)
-```
+source("traitR_standalone_pca_pcoa.R)
+traitR.fun(df,speciescol,attackedcol,ancspecies,attackedgroup,traitgrp,niter,test="pca",correction=NULL)
 
-## Including Plots
+df: a data frame to use
+speciescol: the column name depicting the insect species
+attackedcol: the column name designating attacked/unattacked
+ancspecies: the designator for the ancestral species in speciescol
+ancspecies: the designator for the attacked level in attackedcol
+traitgrp: a list of column names giving the traits of interest. Easiest to generate using
+  traitgrp<-list(mydat[,3:7])
+niter: number of iteractions
+test: either "pca" or "pcoa"
+correction: for pcoa - "none", 
 
-You can also embed plots, for example:
+
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
