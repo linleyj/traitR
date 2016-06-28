@@ -34,7 +34,7 @@ TraitR is the R version of traitspaces written by Steve Heard (initially in visu
 
 #Details
 To run the shiny app put server.R, UI.R and traitR_pcoa.R in a folder. Open them in R studio and click run app from either server.R or UI.R
- Both the shiny app and the standalone will implement a pca for numeric data or a pcoa for a combination of numeric and categorical data. Categorical data can be factors or ordered factors. The pcoa implements the gower dissimilarity gowdis function in the FD package. The pca uses the primcomp function. 
+ <br>Both the shiny app and the standalone will implement a pca for numeric data or a pcoa for a combination of numeric and categorical data. Categorical data can be factors or ordered factors. The pcoa implements the gower dissimilarity gowdis function in the FD package. The pca uses the primcomp function. 
  
  At present the pca works on scaled and centered data (cor=T in princomp) but not for pcoa. This may be implemented in a later version.
 
