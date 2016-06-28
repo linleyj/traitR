@@ -2,7 +2,7 @@
 title: "traitR documentation"
 author: "Linley"
 date: "June 28, 2016"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
