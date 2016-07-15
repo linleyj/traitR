@@ -3,3 +3,8 @@
 .RData
 .Ruserdata
 summaryfiles.txt
+loopwrapper-copy.R
+loopwrapper-pcsores-addedCentroiddegrees.R
+loopwrapper-pcsores-jul2.R
+theta_calc.R
+traitcentroids.R

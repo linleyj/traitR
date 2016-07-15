@@ -9,7 +9,6 @@ allTraits<-allTraits.noGnor
 dim(allTraits)
 
 setwd("C:/Users/Clarrien/Documents/traitR/multiaxestraitR")
-source("~/TraitR_github/traitR/traitR_standalone_multiple_pcs_works.R")
 
 allTraits$May24.N.leaves <- as.numeric(allTraits$May24.N.leaves)
 allTraits$O.June7.Stem.colour<-ordered(allTraits$O.June7.Stem.colour)
@@ -62,84 +61,15 @@ list2 <- colnames(allTraits)[72]
 list2 <- colnames(allTraits)[65]
 
 
+source("~/TraitR_github/traitR/traitR_standalone_with_loopwrapper.R")
 
-#run first to generate column names
-traitRvalues.pcoa<-traitR_multPCs.fun(df = allTraits,speciescol = "Species",attackedcol = "GNOR",ancspecies = "A",attackedgroup = "a",traitgrp = colnames(allTraits)[3:5],test="pca",niter = 10,n=3)
-
-out <- matrix("NA", nrow = length(list2) * length(list1), ncol = 36)
-colnames(out) <-
-  c(
-    "traitgrp",
-    "attackedspecies",
-    colnames(traitRvalues.pcoa$pvals),
-    colnames(traitRvalues.pcoa$distances),
-    rownames(traitRvalues.pcoa$samp),"Theta1","dotprod1","Theta2","dotprod2",paste("Cent1",colnames(traitRvalues.pcoa$centroid1)[2:4]),paste("Cent2",colnames(traitRvalues.pcoa$centroid1)[2:4]),paste("Cent1A",colnames(traitRvalues.pcoa$centroid2)[2:4]),paste("Cent2A",colnames(traitRvalues.pcoa$centroid1)[2:4])
-  )
-
-dir.create("pscores")
-dir.create("summ")
-#PCoA
-loopwrapper.fun<-function(      df = allTraits,
-                                speciescol =
-                                  "Species",
-                                attackedcol = list2,
-                                ancspecies = "A",
-                                attackedgroup =
-                                  "a",
-                                traitgrp = list1,
-                                test = "pcoa", niter = 10, correction = "none",n=2){
-z <- 1
-for (i in 1:length(list2))
-  for (j in 1:length(list1)) {
-    traitRvalues.pcoa <- traitR_multPCs.fun(
-      df = allTraits,
-      speciescol =
-        "Species",
-      attackedcol = list2[i],
-      ancspecies = "A",
-      attackedgroup =
-        "a",
-      traitgrp = list1[[j]],
-      test = "pcoa", niter = 10, correction = "none",n=2)
-
-    out[z, 1] <- paste(names(list1[j]))
-    out[z, 2] <- paste(list2[i])
-    out[z, 3:20]  <-
-      as.numeric(cbind(
-        traitRvalues.pcoa$pvals,
-        traitRvalues.pcoa$distances,
-        t(as.matrix(traitRvalues.pcoa$samp))
-      ))
-    out[z,21:22]<-as.numeric(traitRvalues.pcoa$theta1)
-    out[z,23:24]<-as.numeric(traitRvalues.pcoa$theta2)
-    if(dim(traitRvalues.pcoa$centroid1)[2]>3){
-      out[z,25:27]<-as.numeric(traitRvalues.pcoa$centroid1[1,2:4])
-      out[z,28:30]<-as.numeric(traitRvalues.pcoa$centroid1[2,2:4])
-      out[z,31:33]<-as.numeric(traitRvalues.pcoa$centroid2[1,2:4])
-      out[z,34:36]<-as.numeric(traitRvalues.pcoa$centroid2[2,2:4])
-    }
-    else
-      {
-        out[z,25:26]<-as.numeric(traitRvalues.pcoa$centroid1[1,2:3])
-        out[z,28:29]<-as.numeric(traitRvalues.pcoa$centroid1[2,2:3])
-        out[z,31:32]<-as.numeric(traitRvalues.pcoa$centroid2[1,2:3])
-        out[z,34:35]<-as.numeric(traitRvalues.pcoa$centroid2[2,2:3])
-      }
-       write.csv(
-      traitRvalues.pcoa$pcscores,
-      file = paste0("pscores/", names(list1[j]), "_", list2[i], ".csv"),
-      quote = F,
-      row.names = F
-    )
-    sink("summaryfiles.txt",append=T)
-    print(paste0(names(list1[j]), "_", list2[i], ".txt"))
-    print(traitRvalues.pcoa$summ)
-    sink()
-    z <<- z + 1
-  }
-
-write.csv(out,paste0(filename,".csv"),quote=F,row.names=F)
-}
-
-loopwrapper.fun()
+loopwrapper.fun(df = allTraits,
+                speciescol =
+                  "Species",
+                attackedcol = list2,
+                ancspecies = "A",
+                attackedgroup =
+                  "a",
+                traitgrp = list1,
+                test = "pcoa", niter = 10, correction = "none",n=3, filename="TraitRoutput")
 

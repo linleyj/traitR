@@ -177,6 +177,30 @@ loopwrapper.fun<-function(      df = allTraits,
                                   "a",
                                 traitgrp = list1,
                                 test = "pcoa", niter = 10, correction = "none",n=3, filename="TraitRoutput"){
+  #run initial to get column names
+  traitRvalues.pcoa <- traitR_multPCs.fun(
+    df = allTraits,
+    speciescol =
+      "Species",
+    attackedcol = list2[1],
+    ancspecies = "A",
+    attackedgroup =
+      "a",
+    traitgrp = list1[[1]],
+    test = "pcoa", niter = 10, correction = "none",n=2)
+  
+  out <- matrix("NA", nrow = length(list2) * length(list1), ncol = 36)
+  colnames(out) <-
+    c(
+      "traitgrp",
+      "attackedspecies",
+      colnames(traitRvalues.pcoa$pvals),
+      colnames(traitRvalues.pcoa$distances),
+      rownames(traitRvalues.pcoa$samp),"Theta1","dotprod1","Theta2","dotprod2",paste("Cent1",colnames(traitRvalues.pcoa$centroid1)[2:4]),paste("Cent2",colnames(traitRvalues.pcoa$centroid1)[2:4]),paste("Cent1A",colnames(traitRvalues.pcoa$centroid2)[2:4]),paste("Cent2A",colnames(traitRvalues.pcoa$centroid1)[2:4])
+    )
+  
+  dir.create("pscores")
+  dir.create("summ")
   z <- 1
   for (i in 1:length(list2))
     for (j in 1:length(list1)) {
@@ -228,4 +252,5 @@ loopwrapper.fun<-function(      df = allTraits,
     }
   
   write.csv(out,paste0(filename,".csv"),quote=F,row.names=F)
+  return(out)
 }
