@@ -248,7 +248,7 @@ loopwrapper.fun<-function(      df = allTraits,
       print(paste0(names(list1[j]), "_", list2[i], ".txt"))
       print(traitRvalues.pcoa$summ)
       sink()
-      z <<- z + 1
+      z <- z + 1
     }
   
   write.csv(out,paste0(filename,".csv"),quote=F,row.names=F)
