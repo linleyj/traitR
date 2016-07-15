@@ -63,7 +63,7 @@ list2 <- colnames(allTraits)[65]
 
 source("~/TraitR_github/traitR/traitR_standalone_with_loopwrapper.R")
 
-loopwrapper.fun(df = allTraits,
+myout<-loopwrapper.fun(df = allTraits,
                 speciescol =
                   "Species",
                 attackedcol = list2,
@@ -72,4 +72,9 @@ loopwrapper.fun(df = allTraits,
                   "a",
                 traitgrp = list1,
                 test = "pcoa", niter = 10, correction = "none",n=3, filename="TraitRoutput")
+
+
+
+myout
+
 
